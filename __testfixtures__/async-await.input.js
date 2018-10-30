@@ -66,6 +66,13 @@ const makeRequestArrowLong = () => {
     });
 };
 
+const makeRequestArrowNoReturn = () => {
+  getJSON()
+    .then(data => {
+      console.log(data);
+    });
+};
+
 const makeRequest = () =>
   getJSON()
     .then(data => {

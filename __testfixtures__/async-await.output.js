@@ -62,6 +62,11 @@ const makeRequestArrowLong = async () => {
   return "done";
 };
 
+const makeRequestArrowNoReturn = async () => {
+  const data = await getJSON();
+  console.log(data);
+};
+
 const makeRequest = async () => {
   const data = await getJSON();
   console.log(data);

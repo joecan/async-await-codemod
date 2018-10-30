@@ -29,8 +29,7 @@ module.exports = function transformer(file, api) {
   };
 
   const funcContainsPromiseExpressionStatement = p => {
-    const fnStatementsArray = p.node.body.body;
-
+    const fnStatementsArray = p.node.body.body || [p.node.body];
     for (let i = 0; i <= fnStatementsArray.length; i++) {
       const statement = fnStatementsArray[i];
 
@@ -204,6 +203,10 @@ module.exports = function transformer(file, api) {
   replaceType(j.FunctionDeclaration, funcContainsPromiseExpressionStatement);
 
   replaceType(j.ArrowFunctionExpression, arrowReturnsPromise);
+  replaceType(
+    j.ArrowFunctionExpression,
+    funcContainsPromiseExpressionStatement
+  );
 
   replaceType(j.FunctionExpression, funcContainsPromiseExpressionStatement);
   replaceType(j.FunctionExpression);
